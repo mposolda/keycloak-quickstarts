@@ -97,4 +97,13 @@ public class Controller {
     private KeycloakSecurityContext getSession(HttpServletRequest req) {
         return (KeycloakSecurityContext) req.getAttribute(KeycloakSecurityContext.class.getName());
     }
+
+
+    public String getMessage(HttpServletRequest req) {
+        try {
+            return "Message: " + ServiceClient.callService(req, getSession(req), "secured");
+        } catch (ServiceClient.Failure f) {
+            return "<span class='error'>" + f.getStatus() + " " + f.getReason() + "</span>";
+        }
+    }
 }

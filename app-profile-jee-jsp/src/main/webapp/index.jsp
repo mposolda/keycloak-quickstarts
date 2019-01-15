@@ -24,6 +24,27 @@ limitations under the License.
     <title>Keycloak Example App</title>
 
     <link rel="stylesheet" type="text/css" href="styles.css"/>
+
+    <script>
+        function redirectToProfile() {
+            var scope = 'openid'
+
+            if (document.getElementById('displayPhone').checked) {
+                scope = scope + ' phone';
+            }
+
+            if (document.getElementById('displayAddress').checked) {
+                scope = scope + ' address';
+            }
+
+            if (document.getElementById('serviceAudience').checked) {
+                scope = scope + ' service';
+            }
+
+            var link = 'profile.jsp?scope=' + scope;
+            location.href = link;
+        };
+    </script>
 </head>
 <body>
 <jsp:useBean id="controller" class="org.keycloak.quickstart.profilejee.Controller" scope="request"/>
@@ -35,8 +56,17 @@ limitations under the License.
 </c:if>
 
 <div class="wrapper" id="welcome">
+
+    <div class="content">
+        <table>
+            <tr><td width="30%">Display phone?</td><td><input id="displayPhone" type="checkbox" /></td></tr>
+            <tr><td width="30%">Display address?</td><td><input id="displayAddress" type="checkbox" /></td></tr>
+             <tr><td width="30%">Has service audience?</td><td><input id="serviceAudience" type="checkbox" /></td></tr>
+        </table>
+    </div>
+
     <div class="menu">
-        <button name="loginBtn" onclick="location.href = 'profile.jsp'" type="button">Login</button>
+        <button name="loginBtn" onclick="redirectToProfile()" type="button">Login</button>
     </div>
 
     <div class="content">

@@ -65,6 +65,18 @@ limitations under the License.
                         <td class="label">Email</td>
                         <td><span id="email">${idToken.email}</span></td>
                     </tr>
+                    <tr>
+                        <td class="label">Phone</td>
+                        <td><span id="phone">${idToken.phoneNumber}</span></td>
+                    </tr>
+                    <tr class="even">
+                        <td class="label">Street</td>
+                        <td><span id="street">${idToken.address.streetAddress}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label">Secured service invocation</td>
+                        <td><span id="serviceInvocation"><% out.print(controller.getMessage(request)); %></span></td>
+                    </tr>
                 </table>
             </div>
         </div>
