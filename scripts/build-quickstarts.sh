@@ -20,6 +20,10 @@ if [ "$1" = "jakarta" ]; then
   args="$args -Djakarta"
 fi
 
+# TODO:mposolda
+echo "Maven version obtain"
+mvn --version
+
 mvn clean install $args -DskipTests -B -Dnightly
 if [ -n "$PRODUCT" ] && [ "$PRODUCT" == "true" ]; then
   dist=$PRODUCT_DIST
