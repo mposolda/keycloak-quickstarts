@@ -1,6 +1,8 @@
-# <span>Keycloak</span> Quickstarts
+# <span>RHBK</span> Quickstarts
 
-<span>Keycloak</span> is an Open Source Identity and Access Management solution for modern Applications and Services.
+<span>Red Hat build of Keycloak (RHBK)</span> is an Open Source Identity and Access Management solution for modern Applications and Services.
+
+TODO: Replace all the "Keycloak" and "Quarkus" and all the URLs in the documentation below.
 
 The quickstarts herein provided demonstrate securing applications with <span>Keycloak</span> using different programming languages (and frameworks) 
 and how to extend the server capabilities through a set of Java-based [Service Provider Interfaces(SPI)](https://www.keycloak.org/docs/latest/server_development/). 
