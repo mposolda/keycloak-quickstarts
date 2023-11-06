@@ -3,14 +3,14 @@ js-spa: Node.js Single Page Application
 
 Level: Beginner  
 Technologies: JavaScript, HTML5, Node.js  
-Summary: Single Page Application protected using the Keycloak JavaScript Adapter  
-Target Product: <span>Keycloak</span>
+Summary: Single Page Application protected using the RHBK JavaScript Adapter  
+Target Product: <span>RHBK</span>
 
 What is it?
 -----------
 
 This quickstart demonstrates how to write a Single Page Application(SPA) that authenticates
-using Keycloak. Once authenticated the application shows how to invoke a service secured with Keycloak.
+using RHBK. Once authenticated the application shows how to invoke a service secured with RHBK.
 
 The static resources are served by Node.js from the [public](public) directory. The same resources can also be deployed
 on the web server of your preference.
@@ -21,34 +21,28 @@ System Requirements
 To compile and run this quickstart you will need:
 
 * Node.js 18.16.0+
-* Keycloak 21+
-* Docker 20+
+* RHBK 22+
 
-Starting and Configuring the Keycloak Server
+Starting and Configuring the RHBK Server
 -------------------
 
-To start a Keycloak Server you can use OpenJDK on Bare Metal, Docker, Openshift or any other option described in [Keycloak Getting Started guides]https://www.keycloak.org/guides#getting-started. For example when using Docker just run the following command in the root directory of this quickstart:
+To start a RHBK Server you can use OpenJDK on Bare Metal, RHBK Operator or any other option described in
+[RHBK Getting Started guides]https://www.keycloak.org/guides#getting-started. TODO: Replace with proper getting-started guides
+
+For example when using Bare metal, you need to have Java 17 or later available. Then you can unzip RHBK distribution and in the directory `bin` run this command:  
 
 ```shell
-docker run --name keycloak \
-  -e KEYCLOAK_ADMIN=admin \
-  -e KEYCLOAK_ADMIN_PASSWORD=admin \
-  --network=host \
-  quay.io/keycloak/keycloak:{KC_VERSION} \
-  start-dev \
-  --http-port=8180
+./kc.[sh|bat] start-dev --http-port=8180
 ```
 
-where `KC_VERSION` should be set to 21.0.0 or higher.
+You should be able to access your RHBK server at http://localhost:8180.
 
-You should be able to access your Keycloak Server at http://localhost:8180.
-
-Log in as the admin user to access the Keycloak Administration Console. Username should be `admin` and password `admin`.
+Log in as the admin user to access the RHBK Administration Console. Username should be `admin` and password `admin`.
 
 Import the [realm configuration file](config/realm-import.json) to create a new realm called `quickstart`.
-For more details, see the Keycloak documentation about how to [create a new realm](https://www.keycloak.org/docs/latest/server_admin/index.html#_create-realm).
+For more details, see the RHBK documentation about how to [create a new realm](https://www.keycloak.org/docs/latest/server_admin/index.html#_create-realm). -- TODO: Replace with proper RHBK docs link.
 
-Alternatively, you can create the realm using the following command:
+Alternatively, you can create the realm using the following command (it might require first to run `npm install`):
 
 ```shell
 npm run create-realm
@@ -88,18 +82,37 @@ Once authenticated, you are redirected to the application and you can perform th
 Running tests
 --------------------
 
-Make sure Keycloak is [running](#starting-and-configuring-the-keycloak-server).
+Make sure RHBK is [running](#starting-and-configuring-the-rhbk-server). At the same time, the `npm` should be stopped, so there is nothing listening on http://localhost:8080 .
 
-1. Open a terminal and navigate to the root directory of this quickstart.
+1. The test assumes that `quickstart` realm does not yet exists. If you already imported it as mentioned in previous steps, it may be needed to remove it first.
+It can be done by login in admin console, then going to URL like http://localhost:8180/admin/master/console/#/quickstart/realm-settings and then click `Delete` at the `Action` menu on the left top corner.
 
-2. Run the following command to build and run tests:
+Alternatively, it can be done by command:
+```shell
+npm run delete-realm
+```
+
+2. Open a terminal and navigate to the root directory of this quickstart.
+
+3. Run the following command to build and run tests:
 
    ````
    npm test
    ````
+   
+#### Test troubleshooting
+
+If there is error message like `Executable doesn't exist at /home/yournick/.cache/ms-playwright/chromium-1060/chrome-linux/chrome`, it may be needed to first install playwright with this command:
+
+```shell
+npx playwright install
+```
+
 
 References
 --------------------
+
+TODO: Replace references below with proper links to the RHBK documentation
 
 * [Keycloak JavaScript Adapter](https://www.keycloak.org/docs/latest/securing_apps/#_javascript_adapter)
 * [Keycloak Documentation](https://www.keycloak.org/documentation)

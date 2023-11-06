@@ -4,12 +4,12 @@ nodejs-resource-server: Node.js Resource Server
 Level: Beginner  
 Technologies: Node.js  
 Summary: Node.js Service  
-Target Product: <span>Keycloak</span>
+Target Product: <span>RHBK</span>
 
 What is it?
 -----------
 
-This quickstart demonstrates how to write a RESTful service with Node.js that is secured with <span>Keycloak</span>.
+This quickstart demonstrates how to write a RESTful service with Node.js that is secured with <span>RHBK</span>.
 
 There are 3 endpoints exposed by the service:
 
@@ -25,34 +25,28 @@ System Requirements
 To compile and run this quickstart you will need:
 
 * Node.js 18.16.0+
-* Keycloak 21+
-* Docker 20+
+* RHBK 22+
 
-Starting and Configuring the Keycloak Server
+Starting and Configuring the RHBK Server
 -------------------
 
-To start a Keycloak Server you can use OpenJDK on Bare Metal, Docker, Openshift or any other option described in [Keycloak Getting Started guides]https://www.keycloak.org/guides#getting-started. For example when using Docker just run the following command in the root directory of this quickstart:
+To start a RHBK Server you can use OpenJDK on Bare Metal, RHBK Operator or any other option described in
+[RHBK Getting Started guides]https://www.keycloak.org/guides#getting-started. TODO: Replace with proper getting-started guides
+
+For example when using Bare metal, you need to have Java 17 or later available. Then you can unzip RHBK distribution and in the directory `bin` run this command:
 
 ```shell
-docker run --name keycloak \
-  -e KEYCLOAK_ADMIN=admin \
-  -e KEYCLOAK_ADMIN_PASSWORD=admin \
-  --network=host \
-  quay.io/keycloak/keycloak:{KC_VERSION} \
-  start-dev \
-  --http-port=8180
+./kc.[sh|bat] start-dev --http-port=8180
 ```
 
-where `KC_VERSION` should be set to 21.0.0 or higher.
+You should be able to access your RHBK server at http://localhost:8180.
 
-You should be able to access your Keycloak Server at http://localhost:8180.
-
-Log in as the admin user to access the Keycloak Administration Console. Username should be `admin` and password `admin`.
+Log in as the admin user to access the RHBK Administration Console. Username should be `admin` and password `admin`.
 
 Import the [realm configuration file](config/realm-import.json) to create a new realm called `quickstart`.
-For more details, see the Keycloak documentation about how to [create a new realm](https://www.keycloak.org/docs/latest/server_admin/index.html#_create-realm).
+For more details, see the RHBK documentation about how to [create a new realm](https://www.keycloak.org/docs/latest/server_admin/index.html#_create-realm). -- TODO: Replace with proper RHBK docs link.
 
-Alternatively, you can create the realm using the following command:
+Alternatively, you can create the realm using the following command (it might require first to run `npm install`):
 
 ```shell
 npm run create-realm
@@ -75,9 +69,9 @@ Access the Quickstart
 
 There are 3 endpoints exposed by the service:
 
-* http://localhost:8080/public - requires no authentication
-* http://localhost:8080/secured - can be invoked by users with the `user` role
-* http://localhost:8080/admin - can be invoked by users with the `admin` role
+* http://localhost:3000/public - requires no authentication
+* http://localhost:3000/secured - can be invoked by users with the `user` role
+* http://localhost:3000/admin - can be invoked by users with the `admin` role
 
 You can open the public endpoint directly in the browser to test the service. The two other endpoints are protected and require
 invoking them with a bearer token.
@@ -93,7 +87,7 @@ You should be able to obtain tokens for any of these users:
 | alice    | alice    | user               |
 | admin    | admin    | admin              |
 
-To obtain the bearer token, run the following command:
+To obtain the bearer token, run for instance the following command when on Linux (please make sure to have `curl` and `jq` packages available in your linux distribution):
 
 ```shell
 export access_token=$(\
@@ -123,7 +117,7 @@ As a result, you will see the following response from the service:
 Running tests
 --------------------
 
-Make sure Keycloak is [running](#starting-and-configuring-the-keycloak-server).
+Make sure RHBK is [running](#starting-and-configuring-the-rhbk-server). Also make sure that node server is still listening on http://localhost:3000 .
 
 1. Open a terminal and navigate to the root directory of this quickstart.
 
