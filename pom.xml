@@ -378,11 +378,6 @@
                 <version.wildfly.arquillian.container>4.0.0.Alpha6</version.wildfly.arquillian.container>
             </properties>
             <modules>
-                <module>extension/action-token-authenticator</module>
-                <module>extension/action-token-required-action</module>
-                <module>extension/event-listener-sysout</module>
-                <module>extension/event-store-mem</module>
-                <module>extension/extend-account-console</module>
                 <module>extension/user-storage-simple</module>
                 <module>extension/user-storage-jpa</module>
             </modules>
