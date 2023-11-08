@@ -1,18 +1,18 @@
-rest-authz-resource-server: Spring Boot REST Service Protected Using Keycloak Authorization Services
+rest-authz-resource-server: Spring Boot REST Service Protected Using RHBK Authorization Services
 ===================================================
 
 Level: Beginner
 Technologies: Spring Boot
-Summary: Spring Boot REST Service Protected Using Keycloak Authorization Services
-Target Product: Keycloak
+Summary: Spring Boot REST Service Protected Using RHBK Authorization Services
+Target Product: RHBK
 
 What is it?
 -----------
 
-This quickstart demonstrates how to protect a Spring Boot REST service using Keycloak Authorization Services.
+This quickstart demonstrates how to protect a Spring Boot REST service using RHBK Authorization Services.
 
-It tries to focus on the authorization features provided by Keycloak Authorization Services, where resources are
-protected by a set of permissions and policies defined in Keycloak and access to these resources are enforced by a policy enforcer(PEP)
+It tries to focus on the authorization features provided by RHBK Authorization Services, where resources are
+protected by a set of permissions and policies defined in RHBK and access to these resources are enforced by a policy enforcer(PEP)
 that intercepts every single request sent to the application to check whether or not access should be granted.
 
 System Requirements
@@ -23,32 +23,26 @@ To compile and run this quickstart you will need:
 * JDK 17
 * Apache Maven 3.8.6
 * Spring Boot 3.0.6
-* Keycloak 21+
-* Docker 20+
+* RHBK 22+
 
-Starting and Configuring the Keycloak Server
+Starting and Configuring the RHBK Server
 -------------------
 
-To start a Keycloak Server you can use OpenJDK on Bare Metal, Docker, Openshift or any other option described in [Keycloak Getting Started guides]https://www.keycloak.org/guides#getting-started. For example when using Docker just run the following command in the root directory of this quickstart:
+To start a RHBK Server you can use OpenJDK on Bare Metal, RHBK Operator or any other option described in
+[RHBK Getting Started guides]https://www.keycloak.org/guides#getting-started. TODO: Replace with proper getting-started guides
+
+For example when using Bare metal, you need to have Java 17 or later available. Then you can unzip RHBK distribution and in the directory `bin` run this command:
 
 ```shell
-docker run --name keycloak \
-  -e KEYCLOAK_ADMIN=admin \
-  -e KEYCLOAK_ADMIN_PASSWORD=admin \
-  --network=host \
-  quay.io/keycloak/keycloak:{KC_VERSION} \
-  start-dev \
-  --http-port=8180
+./kc.[sh|bat] start-dev --http-port=8180
 ```
 
-where `KC_VERSION` should be set to 21.0.0 or higher.
+You should be able to access your RHBK server at http://localhost:8180.
 
-You should be able to access your Keycloak Server at http://localhost:8180.
-
-Log in as the admin user to access the Keycloak Administration Console. Username should be `admin` and password `admin`.
+Log in as the admin user to access the RHBK Administration Console. Username should be `admin` and password `admin`.
 
 Import the [realm configuration file](config/realm-import.json) to create a new realm called `quickstart`.
-For more details, see the Keycloak documentation about how to [create a new realm](https://www.keycloak.org/docs/latest/server_admin/index.html#_create-realm).
+For more details, see the RHBK documentation about how to [create a new realm](https://www.keycloak.org/docs/latest/server_admin/index.html#_create-realm). -- TODO: Replace with proper RHBK docs link.
 
 Build and Run the Quickstart
 -------------------------------
@@ -72,7 +66,7 @@ There are 2 endpoints exposed by the service:
 * http://localhost:8080/ - can be invoked by any authenticated user
 * http://localhost:8080/protected/premium - can be invoked by users with the `user_premium` role
 
-To invoke the protected endpoints using a bearer token, your client needs to obtain an OAuth2 access token from a Keycloak server.
+To invoke the protected endpoints using a bearer token, your client needs to obtain an OAuth2 access token from a RHBK server.
 In this example, we are going to obtain tokens using the resource owner password grant type so that the client can act on behalf of any user available from
 the realm.
 
@@ -83,7 +77,7 @@ You should be able to obtain tokens for any of these users:
 | jdoe     | jdoe     | user_premium |
 | alice    | alice    | user         |
 
-To obtain the bearer token, run the following command:
+To obtain the bearer token, run for instance the following command when on Linux (please make sure to have `curl` and `jq` packages available in your linux distribution):
 
 ```shell
 export access_token=$(\
@@ -116,7 +110,7 @@ Accessing Protected Resources using Requesting Party Token (RPT)
 Another approach to access resources protected by a policy enforcer is using a RPT as a bearer token, instead of a regular access token. 
 The RPT is an access token with all permissions granted by the server, basically, an access token containing all permissions granted by the server.
 
-To obtain an RPT, you must first exchange an OAuth2 Access Token for a RPT by invoking the token endpoint at the Keycloak server: 
+To obtain an RPT, you must first exchange an OAuth2 Access Token for a RPT by invoking the token endpoint at the RHBK server: 
 
 ```bash
 export rpt=$(curl -X POST \
@@ -160,7 +154,7 @@ curl http://localhost:8080/protected/premium \
 Running tests
 --------------------
 
-Make sure Keycloak is [running](#starting-and-configuring-the-keycloak-server).
+Make sure RHBK is [running](#starting-and-configuring-the-keycloak-server). TODO: Replace with proper documentation
 
 You don't need Wildfly running because a temporary server is started during test execution.
 
@@ -169,11 +163,13 @@ You don't need Wildfly running because a temporary server is started during test
 2. Run the following command to build and run tests:
 
    ````
-   mvn -Djakarta clean verify
+   mvn -Dspring clean verify
    ````
 
 References
 --------------------
+
+TODO: Update links below with the links to RHBK documentation
 
 * [Spring OAuth 2.0 Resource Server JWT](https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/jwt.html)
 * [Keycloak Authorization Services](https://www.keycloak.org/docs/latest/authorization_services/)
