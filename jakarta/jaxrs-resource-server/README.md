@@ -3,13 +3,13 @@ jakarta-jaxrs-resource-server: JAX-RS Resource Server
 
 Level: Beginner
 Technologies: Jakarta EE
-Summary: A JAX-RS resource server protected with Wildfly Elytron OIDC
-Target Product: <span>Keycloak</span>, <span>WildFly</span>
+Summary: A JAX-RS resource server protected with JBoss EAP Elytron OIDC
+Target Product: <span>RHBK</span>, <span>JBoss EAP</span>
 
 What is it?
 -----------
 
-This quickstart demonstrates how to write a RESTful service with Jakarta RESTful Web Service that is secured with <span>Keycloak</span>.
+This quickstart demonstrates how to write a RESTful service with Jakarta RESTful Web Service that is secured with <span>RHBK</span>.
 
 The endpoints are very simple and will only return a simple message stating what endpoint was invoked.
 
@@ -20,38 +20,34 @@ To compile and run this quickstart you will need:
 
 * JDK 17
 * Apache Maven 3.8.6
-* Wildfly 28+
-* Keycloak 21+
-* Docker 20+
+* JBoss EAP 8
+* RHBK 22+
 
-Starting and Configuring the Keycloak Server
+Starting and Configuring the RHBK Server
 -------------------
 
-To start a Keycloak Server you can use OpenJDK on Bare Metal, Docker, Openshift or any other option described in [Keycloak Getting Started guides]https://www.keycloak.org/guides#getting-started. For example when using Docker just run the following command in the root directory of this quickstart:
+To start a RHBK Server you can use OpenJDK on Bare Metal, RHBK Operator or any other option described in
+[RHBK Getting Started guides]https://www.keycloak.org/guides#getting-started. TODO: Replace with proper getting-started guides
+
+For example when using Bare metal, you need to have Java 17 or later available. Then you can unzip RHBK distribution and in the directory `bin` run this command:
 
 ```shell
-docker run --name keycloak \
-  -e KEYCLOAK_ADMIN=admin \
-  -e KEYCLOAK_ADMIN_PASSWORD=admin \
-  --network=host \
-  quay.io/keycloak/keycloak:{KC_VERSION} \
-  start-dev \
-  --http-port=8180
+./kc.[sh|bat] start-dev --http-port=8180
 ```
 
-where `KC_VERSION` should be set to 21.0.0 or higher.
+You should be able to access your RHBK server at http://localhost:8180.
 
-You should be able to access your Keycloak Server at http://localhost:8180.
-
-Log in as the admin user to access the Keycloak Administration Console. Username should be `admin` and password `admin`.
+Log in as the admin user to access the RHBK Administration Console. Username should be `admin` and password `admin`.
 
 Import the [realm configuration file](config/realm-import.json) to create a new realm called `quickstart`.
-For more details, see the Keycloak documentation about how to [create a new realm](https://www.keycloak.org/docs/latest/server_admin/index.html#_create-realm).
+For more details, see the RHBK documentation about how to [create a new realm](https://www.keycloak.org/docs/latest/server_admin/index.html#_create-realm). -- TODO: Replace with proper RHBK docs link.
 
-Starting the Wildfly Server
+
+Starting the JBoss EAP Server
 -------------------
 
-In order to deploy the example application, you need a Wildfly Server up and running. For more details, see the Wildfly documentation about how to [install the server](https://docs.wildfly.org/).
+In order to deploy the example application, you need a JBoss EAP Server up and running. For more details, see the JBoss EAP documentation about how
+to [install the server](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/8-beta/html-single/jboss_eap_installation_methods/index).
 
 Make sure the server is accessible from `localhost` and listening on port `8080`.
 
@@ -71,14 +67,14 @@ Access the Quickstart
 
 There are 3 endpoints exposed by the service:
 
-* http://localhost:8080/service/public - requires no authentication
-* http://localhost:8080/service/secured - can be invoked by users with the `user` role
-* http://localhost:8080/service/admin - can be invoked by users with the `admin` role
+* http://localhost:8080/jakarta-jaxrs-resource-server/public - requires no authentication
+* http://localhost:8080/jakarta-jaxrs-resource-server/secured - can be invoked by users with the `user` role
+* http://localhost:8080/jakarta-jaxrs-resource-server/admin - can be invoked by users with the `admin` role
 
 You can open the public endpoint directly in the browser to test the service. The two other endpoints are protected and require
 invoking them with a bearer token.
 
-To invoke the protected endpoints using a bearer token, your client needs to obtain an OAuth2 access token from a Keycloak server.
+To invoke the protected endpoints using a bearer token, your client needs to obtain an OAuth2 access token from a RHBK server.
 In this example, we are going to obtain tokens using the resource owner password grant type so that the client can act on behalf of any user available from
 the realm.
 
@@ -89,7 +85,7 @@ You should be able to obtain tokens for any of these users:
 | alice    | alice    | user               |
 | admin    | admin    | admin              |
 
-To obtain the bearer token, run the following command:
+To obtain the bearer token, run for instance the following command when on Linux (please make sure to have `curl` and `jq` packages available in your linux distribution):
 
 ```shell
 export access_token=$(\
@@ -102,7 +98,7 @@ curl -X POST http://localhost:8180/realms/quickstart/protocol/openid-connect/tok
 
 You can use the same command to obtain tokens on behalf of user `admin`, just make sure to change both `username` and `password` request parameters.
 
-After running the command above, you can now access the `http://localhost:8080/service/secured` endpoint
+After running the command above, you can now access the `http://localhost:8080/jakarta-jaxrs-resource-server/secured` endpoint
 because the user `alice` has the `user` role.
 
 ```shell
@@ -140,9 +136,9 @@ Undeploy the Quickstart
 Running tests
 --------------------
 
-Make sure Keycloak is [running](#starting-and-configuring-the-keycloak-server).
+Make sure RHBK is [running](#starting-and-configuring-the-keycloak-server). TODO: Replace with RHBK documentation
 
-You don't need Wildfly running because a temporary server is started during test execution.
+You don't need JBoss EAP running because a temporary server is started during test execution.
 
 1. Open a terminal and navigate to the root directory of this quickstart.
 
@@ -154,6 +150,8 @@ You don't need Wildfly running because a temporary server is started during test
 
 References
 --------------------
+
+TODO: Replace with RHBK documentation
 
 * [Wildfly Elytron OpenID Connect](https://docs.wildfly.org/28/Admin_Guide.html#Elytron_OIDC_Client)
 * [Keycloak Documentation](https://www.keycloak.org/documentation)
