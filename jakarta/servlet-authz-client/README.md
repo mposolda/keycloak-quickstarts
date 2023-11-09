@@ -3,14 +3,14 @@ jakarta-servlet-authz-client: Servlet Application Using Fine-grained Authorizati
 
 Level: Beginner  
 Technologies: Jakarta EE
-Summary: Servlet application protected with Elytron OIDC and Keycloak Authorization Services  
-Target Product: <span>Keycloak</span>, <span>WildFly</span>
+Summary: Servlet application protected with Elytron OIDC and RHBK Authorization Services  
+Target Product: <span>RHBK</span>, <span>JBoss EAP</span>
 
 What is it?
 -----------
 
 This quickstart demonstrates how to enable fine-grained authorization to a Jakarta Servlet application in order to protect
-specific resources and build a dynamic menu based on the permissions obtained from a <span>Keycloak</span> Server.
+specific resources and build a dynamic menu based on the permissions obtained from a <span>RHBK</span> Server.
 
 For this application, users can be regular users, premium users or administrators, where:
 
@@ -33,40 +33,36 @@ To compile and run this quickstart you will need:
 
 * JDK 17
 * Apache Maven 3.8.6
-* Wildfly 28+
-* Keycloak 21+
-* Docker 20+
+* JBoss EAP 8
+* RHBK 22+
 
-Starting and Configuring the Keycloak Server
+Starting and Configuring the RHBK Server
 -------------------
 
-To start a Keycloak Server you can use OpenJDK on Bare Metal, Docker, Openshift or any other option described in [Keycloak Getting Started guides]https://www.keycloak.org/guides#getting-started. For example when using Docker just run the following command in the root directory of this quickstart:
+To start a RHBK Server you can use OpenJDK on Bare Metal, RHBK Operator or any other option described in
+[RHBK Getting Started guides]https://www.keycloak.org/guides#getting-started. TODO: Replace with proper getting-started guides
+
+For example when using Bare metal, you need to have Java 17 or later available. Then you can unzip RHBK distribution and in the directory `bin` run this command:
 
 ```shell
-docker run --name keycloak \
-  -e KEYCLOAK_ADMIN=admin \
-  -e KEYCLOAK_ADMIN_PASSWORD=admin \
-  --network=host \
-  quay.io/keycloak/keycloak:{KC_VERSION} \
-  start-dev \
-  --http-port=8180
+./kc.[sh|bat] start-dev --http-port=8180
 ```
 
-where `KC_VERSION` should be set to 21.0.0 or higher.
+You should be able to access your RHBK server at http://localhost:8180.
 
-You should be able to access your Keycloak Server at http://localhost:8180.
-
-Log in as the admin user to access the Keycloak Administration Console. Username should be `admin` and password `admin`.
+Log in as the admin user to access the RHBK Administration Console. Username should be `admin` and password `admin`.
 
 Import the [realm configuration file](config/realm-import.json) to create a new realm called `quickstart`.
-For more details, see the Keycloak documentation about how to [create a new realm](https://www.keycloak.org/docs/latest/server_admin/index.html#_create-realm).
+For more details, see the RHBK documentation about how to [create a new realm](https://www.keycloak.org/docs/latest/server_admin/index.html#_create-realm). -- TODO: Replace with proper RHBK docs link.
 
-Starting the Wildfly Server
+
+Starting the JBoss EAP Server
 -------------------
 
-In order to deploy the example application, you need a Wildfly Server up and running. For more details, see the Wildfly documentation about how to [install the server](https://docs.wildfly.org/).
+In order to deploy the example application, you need a JBoss EAP Server up and running. For more details, see the JBoss EAP documentation about how
+to [install the server](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/8-beta/html-single/jboss_eap_installation_methods/index).
 
-Make sure the server is accessible from `localhost` and listening on port `8080`. 
+Make sure the server is accessible from `localhost` and listening on port `8080`.
 
 Build and Deploy the Quickstart
 -------------------------------
@@ -96,7 +92,7 @@ If you want to play around, try the following steps:
 
 * Add `user_premium` to `alice` and see if she is now able to access premium resources as well if the dynamic menu changes and display `Do user premium thing`
 * Grant to `alice` the necessary permission to access administrative resources.
-    * Open the <span>Keycloak</span> admin console and make sure the `quickstart` realm is selected
+    * Open the <span>RHBK</span> admin console and make sure the `quickstart` realm is selected
     * Click on `Clients` on the left-side menu and select `jakarta-servlet-authz-client` client
     * Click on `Authorization` tab and then click the `Policies` tab
     * On the `Policies` tab, create a new `User-based Policy` by selecting `alice` user. Name this policy as `Only Alice Policy`
@@ -125,9 +121,9 @@ Undeploy the Quickstart
 Running tests
 --------------------
 
-Make sure Keycloak is [running](#starting-and-configuring-the-keycloak-server).
+Make sure RHBK is [running](#starting-and-configuring-the-keycloak-server). TODO: Replace with RHBK documentation
 
-You don't need Wildfly running because a temporary server is started during test execution.
+You don't need JBoss EAP running because a temporary server is started during test execution.
 
 1. Open a terminal and navigate to the root directory of this quickstart.
 
@@ -140,6 +136,6 @@ You don't need Wildfly running because a temporary server is started during test
 References
 --------------------
 
-* [Wildfly Elytron OpenID Connect](https://docs.wildfly.org/28/Admin_Guide.html#Elytron_OIDC_Client)
+* [SSO With JBoss EAP](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/8-beta/html-single/using_single_sign-on_with_jboss_eap/index#doc-wrapper)
 * [Keycloak Authorization Services](https://www.keycloak.org/docs/latest/authorization_services/)
 * [Keycloak Documentation](https://www.keycloak.org/documentation)
