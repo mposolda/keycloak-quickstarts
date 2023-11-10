@@ -2,21 +2,19 @@
 
 <span>Red Hat build of Keycloak (RHBK)</span> is an Open Source Identity and Access Management solution for modern Applications and Services.
 
-TODO: Replace all the "Keycloak" and "Quarkus" and all the URLs in the documentation below.
-
-The quickstarts herein provided demonstrate securing applications with <span>Keycloak</span> using different programming languages (and frameworks) 
-and how to extend the server capabilities through a set of Java-based [Service Provider Interfaces(SPI)](https://www.keycloak.org/docs/latest/server_development/). 
+The quickstarts herein provided demonstrate securing applications with <span>RHBK</span> using different programming languages (and frameworks) 
+and how to extend the server capabilities through a set of Java-based [Service Provider Interfaces(SPI)](https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/server_developer_guide/index). 
 They provide small, specific, working examples that can be used as a reference for your own project.
 
 They are organized in this repository under different categories (or directories) as follows:
 
-| Category  | Description                                                                           |
-|-----------|---------------------------------------------------------------------------------------|
-| extension | Examples about how to extend the server capabilities using some of the Keycloak SPIs. |
-| jakarta   | Examples about how secure Jakarta Applications                                        |
-| js        | Examples about how to secure JavaScript Applications                                  |
-| nodejs    | Examples about how to secure NodeJS Applications                                      |
-| spring    | Examples about how to secure Spring Applications                                      |
+| Category  | Description                                                                         |
+|-----------|-------------------------------------------------------------------------------------|
+| extension | Examples about how to extend the server capabilities using some of the RHBK SPIs.   |
+| jakarta   | Examples about how secure Jakarta Applications                                      |
+| js        | Examples about how to secure JavaScript Applications                                |
+| nodejs    | Examples about how to secure NodeJS Applications                                    |
+| spring    | Examples about how to secure Spring Applications                                    |
 
 For any missing programming language and framework, you might want to consider looking at:
 
@@ -25,14 +23,14 @@ For any missing programming language and framework, you might want to consider l
   * [Securing a Resource Server Application](https://quarkus.io/guides/security-oidc-bearer-token-authentication-tutorial)
 
 We are happy to accept contributions for any reference that demonstrates how to
-integrate Keycloak with additional programming languages or frameworks.
+integrate RHBK with additional programming languages or frameworks.
 
 ## Building, Testing, and Running the Quickstarts
 
-First clone the Keycloak repository:
+First clone the quickstarts repository:
 
-    git clone https://github.com/keycloak/keycloak-quickstarts.git
-    cd keycloak-quickstarts
+    git clone https://github.com/redhat-developer/rhbk-quickstarts.git
+    cd rhbk-quickstarts
 
 Each quickstart provides its own documentation with the steps you need to follow in order to build, test, and run the example.
 Look at the `README.md` file at the root of a quickstart for more details.
