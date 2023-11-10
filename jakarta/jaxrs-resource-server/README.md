@@ -27,7 +27,7 @@ Starting and Configuring the RHBK Server
 -------------------
 
 To start a RHBK Server you can use OpenJDK on Bare Metal, RHBK Operator or any other option described in
-[RHBK Getting Started guides]https://www.keycloak.org/guides#getting-started. TODO: Replace with proper getting-started guides
+[RHBK Getting Started guides]https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/getting_started_guide/index.
 
 For example when using Bare metal, you need to have Java 17 or later available. Then you can unzip RHBK distribution and in the directory `bin` run this command:
 
@@ -40,8 +40,7 @@ You should be able to access your RHBK server at http://localhost:8180.
 Log in as the admin user to access the RHBK Administration Console. Username should be `admin` and password `admin`.
 
 Import the [realm configuration file](config/realm-import.json) to create a new realm called `quickstart`.
-For more details, see the RHBK documentation about how to [create a new realm](https://www.keycloak.org/docs/latest/server_admin/index.html#_create-realm). -- TODO: Replace with proper RHBK docs link.
-
+For more details, see the RHBK documentation about how to [create a new realm](https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/server_administration_guide/index#proc-creating-a-realm_server_administration_guide).
 
 Starting the JBoss EAP Server
 -------------------
