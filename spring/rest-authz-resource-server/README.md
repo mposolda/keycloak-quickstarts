@@ -156,7 +156,7 @@ Running tests
 
 Make sure RHBK is [running](#starting-and-configuring-the-rhbk-server).
 
-You don't need Wildfly running because a temporary server is started during test execution.
+You don't need spring boot application running because a temporary server is started during test execution.
 
 1. Open a terminal and navigate to the root directory of this quickstart.
 

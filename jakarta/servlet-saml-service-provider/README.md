@@ -49,14 +49,8 @@ to [install the server](https://access.redhat.com/documentation/en-us/red_hat_jb
 
 Make sure the server is accessible from `localhost` and listening on port `8080`.
 
-Once you verified that JBoss EAP server works, it is needed to install SAML adapter into it. You can follow the [SAML Adapter documentation](https://www.keycloak.org/docs/latest/securing_apps/index.html#_saml_jboss_adapter)
-for the details. - TODO: Replace with RHBK Securing apps guide documentation. Just make sure that you download Jakarta version of the SAML adapter.
-It can be downloaded for instance with the command like this on Linux with `curl` command installed (make sure to use proper version):
- 
-```
-export KC_VERSION=22.0.5 
-curl https://repo1.maven.org/maven2/org/keycloak/keycloak-saml-wildfly-adapter-jakarta-dist/$KC_VERSION/keycloak-saml-wildfly-adapter-jakarta-dist-$KC_VERSION.zip --output keycloak-saml-wildfly-adapter-jakarta-dist-$KC_VERSION.zip
-```
+Once you verified that JBoss EAP server works, it is needed to install SAML adapter into it. You can follow the [SAML Adapter documentation](https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/securing_applications_and_services_guide/index#_saml_jboss_adapter)
+for the details. Make sure to download and install Jakarta version of the adapter (artifact `keycloak-saml-wildfly-adapter-jakarta-dist`).
 
 
 Build and Deploy the Quickstart
@@ -95,7 +89,7 @@ mvn -Djakarta clean wildfly:undeploy
 Running tests
 --------------------
 
-Make sure Keycloak is [running](#starting-and-configuring-the-rhbk-server). Also make sure that `quickstart` realm is removed as the test will deploy it during it's execution. TODO: Add to other quickstarts
+Make sure RHBK is [running](#starting-and-configuring-the-rhbk-server). Also make sure that `quickstart` realm is removed as the test will deploy it during it's execution.
 
 You don't need JBoss EAP running because a temporary server is started during test execution.
 
@@ -110,5 +104,5 @@ You don't need JBoss EAP running because a temporary server is started during te
 References
 --------------------
 
-* [Keycloak SAML Adapter](https://www.keycloak.org/docs/latest/securing_apps/#_saml_jboss_adapter)
-* [Keycloak Documentation](https://www.keycloak.org/documentation)
+* [RHBK SAML Adapter](https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/securing_applications_and_services_guide/index#_saml_jboss_adapter)
+* [RHBK Documentation](https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/)

@@ -136,5 +136,5 @@ References
 --------------------
 
 * [SSO With JBoss EAP](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/8-beta/html-single/using_single_sign-on_with_jboss_eap/index#doc-wrapper)
-* [Keycloak Authorization Services](https://www.keycloak.org/docs/latest/authorization_services/)
-* [Keycloak Documentation](https://www.keycloak.org/documentation)
+* [RHBK Authorization Services](https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/authorization_services_guide/index)
+* [RHBK Documentation](https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/)

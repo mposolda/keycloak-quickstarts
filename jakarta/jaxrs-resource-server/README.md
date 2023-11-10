@@ -150,8 +150,5 @@ You don't need JBoss EAP running because a temporary server is started during te
 References
 --------------------
 
-TODO: Replace with RHBK documentation
-
 * [SSO With JBoss EAP](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/8-beta/html-single/using_single_sign-on_with_jboss_eap/index#doc-wrapper)
-* [Wildfly Elytron OpenID Connect](https://docs.wildfly.org/28/Admin_Guide.html#Elytron_OIDC_Client)
-* [Keycloak Documentation](https://www.keycloak.org/documentation)
+* [RHBK Documentation](https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/)
