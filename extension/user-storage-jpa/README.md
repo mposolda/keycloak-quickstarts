@@ -23,7 +23,7 @@ System Requirements
 
 You need to have <span>RHBK</span> running. It is recommended to use RHBK 22 or later.
 
-All you need to build this project is Java 11 (Java SDK 11) or later and Maven 3.6.3 or later.
+All you need to build this project is Java 17 (Java SDK 17) or later and Maven 3.6.3 or later.
 
 Build and Deploy the Quickstart
 -------------------------------
