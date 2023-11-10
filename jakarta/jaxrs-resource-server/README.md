@@ -136,7 +136,7 @@ Undeploy the Quickstart
 Running tests
 --------------------
 
-Make sure RHBK is [running](#starting-and-configuring-the-keycloak-server). TODO: Replace with RHBK documentation
+Make sure RHBK is [running](#starting-and-configuring-the-rhbk-server).
 
 You don't need JBoss EAP running because a temporary server is started during test execution.
 
