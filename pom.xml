@@ -24,7 +24,7 @@
     <version>25.0.0</version>
     <packaging>pom</packaging>
     <name>Keycloak Quickstart: parent</name>
-    <description>Parent</description>
+    <description>Parent description (test)</description>
 
     <licenses>
         <license>
