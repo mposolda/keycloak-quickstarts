@@ -1,6 +1,6 @@
 # <span>Keycloak</span> Quickstarts
 
-<span>Keycloak</span> is an Open Source Identity and Access Management solution for modern Applications and Services.
+<span>Keycloak</span> is an Open Source Identity and Access Management solution for modern Applications and Services. foo bar
 
 The quickstarts herein provided demonstrate securing applications with <span>Keycloak</span> using different programming languages (and frameworks) 
 and how to extend the server capabilities through a set of Java-based [Service Provider Interfaces(SPI)](https://www.keycloak.org/docs/latest/server_development/). 
